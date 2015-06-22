@@ -1,5 +1,5 @@
 <?php
-$Module = array( 'name' => 'Sensor' );
+$Module = array( 'name' => 'Social User' );
 
 $ViewList = array();
 

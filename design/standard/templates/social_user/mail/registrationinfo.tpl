@@ -157,23 +157,6 @@
             </center>
         </td>
     </tr>
-    <tr>
-        <td align='center'>
-            <center>
-                <table border='0' cellpadding='30' cellspacing='0' style='margin-left: auto;margin-right: auto;width:600px;text-align:center;' width='600'>
-                    <tr>
-                        <td align='center' valign='top'>
-                            <small>
-                                &copy; {currentdate()|datetime('custom', '%Y')} {$social_pagedata.logo_title} -
-                                {'%privacy_link_start%Informazioni sulla privacy%privacy_link_end%'|i18n('openpa_sensor/mail/registration',, hash( '%privacy_link_start%', concat( '<a href=http://', $social_pagedata.site_url, '/sensor/info/privacy/>' ), '%privacy_link_end%', '</a>' ))} -
-                                {'%terms_link_start%Termini di utilizzo%terms_link_end%'|i18n('openpa_sensor/mail/registration',, hash( '%terms_link_start%', concat( '<a href=http://', $social_pagedata.site_url, '/sensor/info/terms/>' ), '%terms_link_end%', '</a>' ))}
-                            </small>
-                        </td>
-                    </tr>
-                </table>
-            </center>
-        </td>
-    </tr>
 </table>
 </body>
 </html>

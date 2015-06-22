@@ -41,7 +41,7 @@
         <span>{'oppure'|i18n('social_user/signin')}</span>
         <div class="or_r"></div>
     </div>
-    <p class="sign_title">{'Accedi con il tuo account SensorCivico'|i18n('social_user/signin')}</p>
+    <p class="sign_title">{'Accedi con il tuo account'|i18n('social_user/signin')}</p>
 	*}
 	
 	<h3>
