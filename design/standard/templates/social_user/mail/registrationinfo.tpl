@@ -1,5 +1,5 @@
-{set-block scope=root variable=subject}{'Benvenuto in %1'|i18n('social_user/mail/registration',,array($site_title))}{/set-block}
 {def $social_pagedata = social_pagedata()}
+{set-block scope=root variable=subject}{'Benvenuto in %1'|i18n('social_user/mail/registration',,array($social_pagedata.site_title))}{/set-block}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
