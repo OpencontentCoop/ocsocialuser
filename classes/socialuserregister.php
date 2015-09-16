@@ -237,7 +237,7 @@ class SocialUserRegister
         return false;
     }
 
-    public static function finish( eZModule $Module, eZContentObject $object = null )
+    public static function finish( eZModule $Module, eZContentObject $object = null, $ignoreVerify = false )
     {
         if ( $object === null )
         {
@@ -280,22 +280,25 @@ class SocialUserRegister
                     throw new Exception( eZError::KERNEL_NOT_FOUND );
                 }
 
-                if ( self::getVerifyMode() == self::MODE_MAIL_BLOCK )
+                if ( !$ignoreVerify )
                 {
-                    self::sendMail( $user, $hash );
-                }
-                elseif( self::getVerifyMode() == self::MODE_MAIL_WITH_MODERATION )
-                {
-                    $socialUser = SocialUser::instance( $user );
-                    $socialUser->setModerationMode( true );
-                    self::sendMail( $user, $hash );
-                    $user->loginCurrent();
-                }
-                elseif( self::getVerifyMode() == self::MODE_ONLY_CAPTCHA )
-                {
-                    self::sendMail( $user );
-                    $user->loginCurrent();
-                    $Module->redirectTo( '/' );
+                    if ( self::getVerifyMode() == self::MODE_MAIL_BLOCK )
+                    {
+                        self::sendMail( $user, $hash );
+                    }
+                    elseif ( self::getVerifyMode() == self::MODE_MAIL_WITH_MODERATION )
+                    {
+                        $socialUser = SocialUser::instance( $user );
+                        $socialUser->setModerationMode( true );
+                        self::sendMail( $user, $hash );
+                        $user->loginCurrent();
+                    }
+                    elseif ( self::getVerifyMode() == self::MODE_ONLY_CAPTCHA )
+                    {
+                        self::sendMail( $user );
+                        $user->loginCurrent();
+                        $Module->redirectTo( '/' );
+                    }
                 }
 
                 ezpEvent::getInstance()->notify( 'social_user/signup', array( $user->id() ) );
