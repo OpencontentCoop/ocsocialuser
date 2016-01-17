@@ -89,7 +89,7 @@ class SocialUser
 
     public function hasModerationMode()
     {
-        return $this->info['moderate'] == 1;
+        return isset( $this->info['moderate'] ) && $this->info['moderate'] == 1;
     }
 
     public function setBlockMode( $enable = true )
@@ -171,7 +171,7 @@ class SocialUser
         }
         else
         {
-            $info = unserialize( $siteData->attribute( 'value' ) );
+            $info = (array) unserialize( $siteData->attribute( 'value' ) );
             $siteData->setAttribute( 'value', serialize( array_merge( $info, $this->info ) ) );
         }
         $siteData->store();
