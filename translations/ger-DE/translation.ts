@@ -151,6 +151,16 @@
         <translation>E-Mail  bereits in Verwendung. Passwort vergessen? &lt;a href=&quot;%forgot_url&quot;&gt;klicken Sie hier&lt;/a&gt;</translation>
     </message>
     <message>
+        <location filename="socialuserregister.php" line="96"/>
+        <source>Email già  in uso. Hai dimenticato la password?;</source>
+        <translation>E-Mail  bereits in Verwendung. Passwort vergessen?</translation>
+    </message>
+    <message>
+        <location filename="socialuserregister.php" line="96"/>
+        <source>Clicca qui</source>
+        <translation>Klicken Sie hier</translation>
+    </message>
+    <message>
         <location filename="socialuserregister.php" line="123"/>
         <source>La password deve essere lunga almeno %1 caratteri</source>
         <translation>Das Passwort muss mindestens %1 Zeichen lang sein</translation>

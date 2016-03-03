@@ -93,12 +93,11 @@ class SocialUserRegister
         {
             $forgotUrl = 'user/forgotpassword';
             eZURI::transformURI( $forgotUrl );
-            throw new InvalidArgumentException( ezpI18n::tr(
-                'social_user/signup',
-                'Email già in uso. Hai dimenticato la password? <a href="%forgot_url">Clicca qui</a>',
-                null,
-                array( '%forgot_url' => $forgotUrl )
-            ) );
+            throw new InvalidArgumentException(
+                ezpI18n::tr('social_user/signup', 'Email già in uso. Hai dimenticato la password?')
+                . ' '
+                . '<a href="'.$forgotUrl.'">'.ezpI18n::tr('social_user/signup', 'Clicca qui').'</a>'
+            );
         }
         $this->email = $email;
     }
