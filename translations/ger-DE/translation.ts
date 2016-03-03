@@ -152,7 +152,7 @@
     </message>
     <message>
         <location filename="socialuserregister.php" line="96"/>
-        <source>Email già  in uso. Hai dimenticato la password?;</source>
+        <source>Email già  in uso. Hai dimenticato la password?</source>
         <translation>E-Mail  bereits in Verwendung. Passwort vergessen?</translation>
     </message>
     <message>
