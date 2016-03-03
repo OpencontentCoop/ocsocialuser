@@ -190,7 +190,7 @@
     </message>
     <message>
         <source>Password</source>
-        <translation>Password</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Iscriviti</source>
