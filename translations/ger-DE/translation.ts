@@ -112,11 +112,11 @@
     </message>
     <message>
         <source>Indirizzo Email</source>
-        <translation>Email Adresse</translation>
+        <translation>E-Mail-Adresse</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Password</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Accedi</source>
@@ -128,7 +128,7 @@
     </message>
     <message>
         <source>Hai dimenticato la password?</source>
-        <translation>Password vergessen?</translation>
+        <translation>Passwort vergessen?</translation>
     </message>
 </context>
 <context>
@@ -143,27 +143,27 @@
     <message>
         <location filename="socialuserregister.php" line="87"/>
         <source>Indirizzo email non valido</source>
-        <translation>Email Adresse nicht gültig</translation>
+        <translation>E-Mail Adresse nicht gültig</translation>
     </message>
     <message>
         <location filename="socialuserregister.php" line="96"/>
         <source>Email già  in uso. Hai dimenticato la password? &lt;a href=&quot;%forgot_url&quot;&gt;Clicca qui&lt;/a&gt;</source>
-        <translation>Email  bereits in Verwendung. Password vergessen? &lt;a href=&quot;%forgot_url&quot;&gt;klicken Sie hier&lt;/a&gt;</translation>
+        <translation>E-Mail  bereits in Verwendung. Passwort vergessen? &lt;a href=&quot;%forgot_url&quot;&gt;klicken Sie hier&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="socialuserregister.php" line="123"/>
         <source>La password deve essere lunga almeno %1 caratteri</source>
-        <translation>Das Password muss mindestens %1 Zeichen lang sein</translation>
+        <translation>Das Passwort muss mindestens %1 Zeichen lang sein</translation>
     </message>
     <message>
         <location filename="socialuserregister.php" line="132"/>
         <source>La password non può essere &quot;password&quot;.</source>
-        <translation></translation>
+        <translation>Das Passwort darf nicht “Password” lauten</translation>
     </message>
     <message>
         <location filename="socialuserregister.php" line="151"/>
         <source>Il nodo (%1) specificato in [UserSettings].DefaultUserPlacement setting in site.ini non esiste!</source>
-        <translation>Das Password darf nicht “Password” lauten</translation>
+        <translation>Fehlkonfiguration [UserSettings].DefaultUserPlacement</translation>
     </message>
     <message>
         <location filename="socialuserregister.php" line="173"/>
@@ -196,11 +196,11 @@
     </message>
     <message>
         <source>Inserisci il codice di sicurezza</source>
-        <translation>Sicherheitscode eingeben</translation>
+        <translation>Captcha eingeben</translation>
     </message>
     <message>
         <source>Clicca qui per ottenere un nuovo codice</source>
-        <translation>Zeige einen neuen Code an</translation>
+        <translation>Hier klicken – Zeige neuen Captcha an</translation>
     </message>
     <message>
         <source>Prosegui</source>
@@ -208,15 +208,15 @@
     </message>
     <message>
         <source>Ti è stata inviata un&apos;e-mail all&apos;indirizzo che hai specificato</source>
-        <translation>Sie haben eine E-Mail gesendet</translation>
+        <translation>Eine E-Mail mit Aktivierungslink wurde soeben verschickt</translation>
     </message>
     <message>
         <source>Segui le istruzioni che troverai nel messaggio per attivare il tuo profilo</source>
-        <translation>Folgen Sie den Anweisungen in dieser Mail, um Ihr Konto zu aktivieren</translation>
+        <translation>Den Anweisungen folgen, die in der E-Mail angegeben sind.</translation>
     </message>
     <message>
         <source>Finché non avrai attivato il tuo profilo, tutte le tue attività saranno moderate</source>
-        <translation>Bis Sie Ihr Profil aktiviert haben, werden alle Ihre Aktivitäten moderat sein</translation>
+        <translation>Erst nach Bestätigung des Aktivierungslinks wird die Meldung bearbeitet.</translation>
     </message>
     <message>
         <source>Inizia</source>
