@@ -11,7 +11,7 @@
     <message>
         <location filename="socialuser.php" line="252"/>
         <source>Il tuo account è ora in moderazione, tutte le tue attività  non saranno rese pubbliche.</source>
-        <translation>Ihr Konto ist jetzt in Maßen, werden alle Ihre Aktivitäten nicht öffentlich gemacht werden.</translation>
+        <translation>Dein Account wird jetzt moderiert. Deine Tätigkeiten werden nicht veröffentlicht.</translation>
     </message>
 </context>
 <context>
@@ -147,8 +147,8 @@
     </message>
     <message>
         <location filename="socialuserregister.php" line="96"/>
-        <source>Email già  in uso. Hai dimenticato la password? &lt;a href=&quot;%forgot_url&quot;&gt;Clicca qui&lt;/a&gt;</source>
-        <translation>E-Mail  bereits in Verwendung. Passwort vergessen? &lt;a href=&quot;%forgot_url&quot;&gt;klicken Sie hier&lt;/a&gt;</translation>
+        <source>Email già in uso. Hai dimenticato la password? &lt;a href=&quot;%forgot_url&quot;&gt;Clicca qui&lt;/a&gt;</source>
+        <translation>E-Mail bereits vergeben. Passwort vergessen? &lt;a href=&quot;%forgot_url&quot;&gt;Hier anklicken&lt;/a></translation>
     </message>
     <message>
         <location filename="socialuserregister.php" line="96"/>
