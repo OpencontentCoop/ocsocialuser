@@ -2,6 +2,8 @@
 
 class SocialUserRegister
 {
+    const MODE_NULL = -1;
+
     const MODE_ONLY_CAPTCHA = 1;
 
     const MODE_MAIL_WITH_MODERATION = 2;
@@ -13,6 +15,10 @@ class SocialUserRegister
     protected $email;
 
     protected $password;
+
+    protected static $verifyMode;
+
+    protected static $userCreator;
 
     public static function getSessionUserObject()
     {
@@ -37,21 +43,39 @@ class SocialUserRegister
 
     public static function getVerifyMode()
     {
-        if (
-            eZINI::instance( 'social_user.ini' )->hasVariable( 'GeneralSettings', 'RegistrationMode' )
-            && in_array(
-                eZINI::instance( 'social_user.ini' )->variable( 'GeneralSettings', 'RegistrationMode' ),
-                array( self::MODE_MAIL_WITH_MODERATION, self::MODE_MAIL_BLOCK, self::MODE_ONLY_CAPTCHA )
-            )
-        )
-        {
-            $mode = eZINI::instance( 'social_user.ini' )->variable( 'GeneralSettings', 'RegistrationMode' );
+        if (self::$verifyMode === null) {
+            if (
+                eZINI::instance('social_user.ini')->hasVariable('GeneralSettings', 'RegistrationMode')
+                && in_array(
+                    eZINI::instance('social_user.ini')->variable('GeneralSettings', 'RegistrationMode'),
+                    array(self::MODE_MAIL_WITH_MODERATION, self::MODE_MAIL_BLOCK, self::MODE_ONLY_CAPTCHA)
+                )
+            ) {
+                self::$verifyMode = eZINI::instance('social_user.ini')->variable('GeneralSettings', 'RegistrationMode');
+            } else {
+                self::$verifyMode = self::MODE_MAIL_WITH_MODERATION;
+            }
         }
-        else
-        {
-            $mode = self::MODE_MAIL_WITH_MODERATION;
+        return self::$verifyMode;
+    }
+
+    public static function setVerifyMode($mode)
+    {
+        self::$verifyMode = $mode;
+    }
+
+    public static function getUserCreator()
+    {
+        if (self::$userCreator === null){
+            self::$userCreator = eZINI::instance()->variable( "UserSettings", "UserCreatorID" );
         }
-        return $mode;
+
+        return self::$userCreator;
+    }
+
+    public static function setUserCreator($userId)
+    {
+        self::$userCreator = $userId;
     }
 
     public function setName( $name )
@@ -158,7 +182,7 @@ class SocialUserRegister
         {
             $userClassID = $ini->variable( "UserSettings", "UserClassID" );
             $class = eZContentClass::fetch( $userClassID );
-            $userCreatorID = $ini->variable( "UserSettings", "UserCreatorID" );
+            $userCreatorID = self::getUserCreator();
             $defaultSectionID = $ini->variable( "UserSettings", "DefaultSectionID" );
             $contentObject = $class->instantiate( $userCreatorID, $defaultSectionID );
             /** @var eZContentObjectAttribute[] $dataMap */
@@ -238,8 +262,7 @@ class SocialUserRegister
 
     public static function finish( eZModule $Module, eZContentObject $object = null, $ignoreVerify = false )
     {
-        if ( $object === null )
-        {
+        if ($object === null) {
             $object = self::getSessionUserObject();
         }
 
@@ -296,7 +319,9 @@ class SocialUserRegister
                     {
                         self::sendMail( $user );
                         $user->loginCurrent();
-                        $Module->redirectTo( '/' );
+                        if ($Module instanceof eZModule) {
+                            $Module->redirectTo('/');
+                        }
                     }
                 }
 

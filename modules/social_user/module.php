@@ -41,3 +41,4 @@ $FunctionList = array();
 //$FunctionList['login'] = array();
 $FunctionList['signup'] = array();
 $FunctionList['setting'] = array();
+$FunctionList['api_super_user'] = array();
