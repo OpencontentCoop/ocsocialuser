@@ -212,28 +212,10 @@ class SocialUserRegister
         }
         else
         {
-            require_once 'extension/ocsocialuser/classes/recaptchalib.php';
-            $http = eZHTTPTool::instance();
-            $commentsIni = eZINI::instance( 'ezcomments.ini' );
-            $privateKey = $commentsIni->variable( 'RecaptchaSetting', 'PrivateKey' );
-            if ( $http->hasPostVariable( 'recaptcha_challenge_field' )
-                 && $http->hasPostVariable( 'recaptcha_response_field' )
-            )
-            {
-                $ip = $_SERVER["REMOTE_ADDR"];
-                $challengeField = $http->postVariable( 'recaptcha_challenge_field' );
-                $responseField = $http->postVariable( 'recaptcha_response_field' );
-                $captchaResponse = recaptcha_check_answer(
-                    $privateKey,
-                    $ip,
-                    $challengeField,
-                    $responseField
-                );
-                return $captchaResponse->is_valid;
-            }
+            $recaptcha = new SocialUserRecaptcha();
+            return $recaptcha->validate();
 
         }
-        return false;
     }
 
     public static function finish( eZModule $Module, eZContentObject $object = null, $ignoreVerify = false )
