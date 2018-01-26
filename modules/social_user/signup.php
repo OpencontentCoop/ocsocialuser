@@ -13,6 +13,7 @@ $currentUser = eZUser::currentUser();
 $invalidForm = false;
 $errors = array();
 $captchaIsValid = false;
+$recaptcha = new SocialUserRecaptcha();
 
 $tpl->setVariable( 'name', false );
 $tpl->setVariable( 'email', false );
@@ -112,6 +113,8 @@ $tpl->setVariable( 'invalid_form', $invalidForm );
 $tpl->setVariable( 'errors', $errors );
 $tpl->setVariable( 'current_user', $currentUser );
 $tpl->setVariable( 'persistent_variable', array() );
+$tpl->setVariable( 'recaptcha_public_key', $recaptcha->getPublicKey() );
+
 
 $Result['persistent_variable'] = $tpl->variable( 'persistent_variable' );
 $Result['content'] = $tpl->fetch( 'design:social_user/signup.tpl' );

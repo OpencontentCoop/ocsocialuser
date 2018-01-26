@@ -22,40 +22,17 @@
                     {elseif $show_captcha}
                         {def $bypass_captcha = false()}
                         {if $bypass_captcha|not}
+                            <style>.g-recaptcha div{ldelim}margin: 0 auto{rdelim}</style>
                             <fieldset>
                                 <legend>{'Codice di sicurezza'|i18n( 'social_user/signup' )}</legend>
-                                {if ezini( 'RecaptchaSetting', 'PublicKey', 'ezcomments.ini' )|eq('')}
+                                {if $recaptcha_public_key|not()}
                                     <div class="message-warning">
                                         {'reCAPTCHA API key non trovata'|i18n( 'social_user/signup' )}
                                     </div>
                                 {else}
-                                    <script type="text/javascript">
-                                        {def $theme = ezini( 'RecaptchaSetting', 'Theme', 'ezcomments.ini' )}
-                                        {def $language = ezini( 'RecaptchaSetting', 'Language', 'ezcomments.ini' )}
-                                        {def $tabIndex = ezini( 'RecaptchaSetting', 'TabIndex', 'ezcomments.ini' )}
-                                        var RecaptchaOptions = {literal}{{/literal} theme : '{$theme}',
-                                            lang : '{$language}',
-                                            tabindex : {$tabIndex} {literal}}{/literal};
-                                    </script>
-                                    {if $theme|eq('custom')}
-                                        {*Customized theme start*}
-                                        <p>
-                                            {'Inserisci il codice di sicurezza'|i18n( 'social_user/signup' )}
-                                            <a href="javascript:;" onclick="Recaptcha.reload();">
-                                                {'Clicca qui per ottenere un nuovo codice'|i18n( 'social_user/signup' )}
-                                            </a>
-                                        </p>
-                                        <div id="recaptcha_image" style="margin: 0 auto"></div>
-                                        <div style="width: 300px;margin: 0 auto">
-                                        <p>
-                                            <input style="width: 300px;font-size: 2em" type="text" class="box" id="recaptcha_response_field" name="recaptcha_response_field" />
-                                        </p>
-                                        <button name="CaptchaButton" type="submit" class="btn btn-success btn-lg btn-block">{'Prosegui'|i18n('social_user/signup')}</button>
-                                        </div>
-                                        {*Customized theme end*}
-                                    {/if}
-                                    {fetch( 'social_user', 'recaptcha_html' )}
-
+                                    <div class="g-recaptcha" data-sitekey="{$recaptcha_public_key}"></div>
+                                    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl={fetch( 'content', 'locale' ).country_code|downcase}"></script>
+                                    <button name="CaptchaButton" type="submit" class="btn btn-success btn-lg btn-block">{'Prosegui'|i18n('social_user/signup')}</button>
                                 {/if}
                             </fieldset>
                         {/if}
