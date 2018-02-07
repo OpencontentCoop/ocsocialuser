@@ -252,7 +252,8 @@ class SocialUserRegister
         {
             $operationResult = eZOperationHandler::execute( 'content', 'publish', array( 'object_id' => $object->attribute( 'id' ), 'version' => 1 ) );
 
-            eZUserOperationCollection::setSettings( $object->attribute( 'id' ), self::getVerifyMode() !== self::MODE_MAIL_BLOCK, 0 );
+            $isEnabled = self::getVerifyMode() !== self::MODE_MAIL_BLOCK || $ignoreVerify;
+            eZUserOperationCollection::setSettings( $object->attribute( 'id' ), $isEnabled, 0 );
 
             if ( ( array_key_exists( 'status', $operationResult ) && $operationResult['status'] != eZModuleOperationInfo::STATUS_CONTINUE ) )
             {
