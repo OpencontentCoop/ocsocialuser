@@ -31,6 +31,14 @@ $ViewList['activate'] = array(
     'functions' => array( 'signup' )
 );
 
+$ViewList['zombies'] = array(
+    'script' =>	'zombies.php',
+    'ui_context' => 'administration',
+    'params' => array( 'ZombieID' ),
+    'functions' => array( 'setting' )
+);
+
+
 //$ViewList['login'] = array(
 //    'script' =>	'login.php',
 //    'params' => array(),
