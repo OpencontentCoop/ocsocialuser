@@ -20,6 +20,8 @@ class SocialUserRegister
 
     protected static $userCreator;
 
+    private static $customFieldHandlers;
+
     public static function getSessionUserObject()
     {
         $object = eZContentObject::fetch( eZHTTPTool::instance()->sessionVariable( "RegisterUserID" ) );
@@ -179,9 +181,8 @@ class SocialUserRegister
             ) );
         }
         else
-        {
-            $userClassID = $ini->variable( "UserSettings", "UserClassID" );
-            $class = eZContentClass::fetch( $userClassID );
+        {            
+            $class = self::getUserClass();
             $userCreatorID = self::getUserCreator();
             $defaultSectionID = $ini->variable( "UserSettings", "DefaultSectionID" );
             $contentObject = $class->instantiate( $userCreatorID, $defaultSectionID );
@@ -222,6 +223,12 @@ class SocialUserRegister
             $account->store();
 
             eZUserOperationCollection::setSettings( $objectID, self::getVerifyMode() !== self::MODE_MAIL_BLOCK, 0 );
+
+            $customFields = SocialUserRegister::getCustomSignupFields();
+            foreach ($customFields as $customField) {
+                $customField->store($contentObject, $dataMap);
+            }
+
             self::setSessionUser( $objectID );
         }
         $db->commit();
@@ -381,6 +388,42 @@ class SocialUserRegister
         }
 
         return '<script type="text/javascript" src="' . $server . '/challenge?k=' . $pubkey . $errorpart . '"></script><noscript><iframe src="' . $server . '/noscript?k=' . $pubkey . $errorpart . '" height="300" width="500" frameborder="0"></iframe><br/><textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea><input type="hidden" name="recaptcha_response_field" value="manual_challenge"/></noscript>';
+    }
+
+    public static function getUserClass()
+    {
+        $ini = eZINI::instance();
+        $userClassID = $ini->variable( "UserSettings", "UserClassID" );
+        return eZContentClass::fetch( $userClassID );
+    }
+
+    /**
+     * @return SocialUserSignupCustomFieldInterface[]
+     */
+    public static function getCustomSignupFields()
+    {
+        if (self::$customFieldHandlers === null){
+            self::$customFieldHandlers = array();
+            $socialUserIni = eZINI::instance('social_user.ini');
+            if ($socialUserIni->hasVariable('SignupCustomFields', 'CustomFields')){
+                $customFields = $socialUserIni->variable('SignupCustomFields', 'CustomFields');
+                foreach ($customFields as $customField) {
+                    if ($socialUserIni->hasGroup('SignupCustomField_' . $customField)){
+                        $settings = $socialUserIni->group('SignupCustomField_' . $customField);
+                        if (isset($settings['PHPClass']) && class_exists($settings['PHPClass'])){
+                            $handler = new $settings['PHPClass'];
+                            if($handler instanceof SocialUserSignupCustomFieldInterface){
+                                self::$customFieldHandlers[$customField] = $handler;
+                            }
+                        }else{
+                            self::$customFieldHandlers[$customField] = new SocialUserSignupCustomField($settings);
+                        }
+                    }
+                }
+            }
+        }
+
+        return self::$customFieldHandlers;
     }
 
 }

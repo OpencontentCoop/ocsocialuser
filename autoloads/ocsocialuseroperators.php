@@ -6,7 +6,8 @@ class OCSocialUserOperators
     {
         return array(
             'user_settings',
-            'current_social_user'
+            'current_social_user',
+            'signup_custom_fields',
         );
     }
 
@@ -46,7 +47,12 @@ class OCSocialUserOperators
 
             case 'current_social_user':
             {
-                $operatorValue = SocialUser::current();;
+                $operatorValue = SocialUser::current();
+            } break;
+
+            case 'signup_custom_fields':
+            {
+                $operatorValue = SocialUserRegister::getCustomSignupFields();
             } break;
         }
     }
