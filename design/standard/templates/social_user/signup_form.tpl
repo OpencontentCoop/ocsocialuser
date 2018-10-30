@@ -12,7 +12,10 @@
                 <div class="col-lg-8 col-md-offset-2">
                     <input autocomplete="off" id="Name" name="Name" placeholder="{'Nome e cognome'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if is_set($name)}{$name}{/if}" />
                     <input autocomplete="off" id="Emailaddress" name="EmailAddress" placeholder="{'Indirizzo Email'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if is_set($email)}{$email}{/if}" />
-                    <input autocomplete="off" id="Password" name="Password" placeholder="{'Password'|i18n('social_user/signup')}" class="form-control" required="" type="password">
+                    <input autocomplete="off" id="Password" name="Password" placeholder="{'Password'|i18n('social_user/signup')}" class="form-control" required="" type="password">                    
+                    {foreach signup_custom_fields() as $custom_field}
+                        {include uri=$custom_field.template custom_field=$custom_field}
+                    {/foreach}
                 </div>
             </div>
             {if and( is_set( $terms_url ), is_set( $privacy_url ) )}

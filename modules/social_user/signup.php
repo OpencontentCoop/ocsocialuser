@@ -18,6 +18,9 @@ $recaptcha = new SocialUserRecaptcha();
 $tpl->setVariable( 'name', false );
 $tpl->setVariable( 'email', false );
 
+$customFields = SocialUserRegister::getCustomSignupFields();
+$tpl->setVariable( 'custom_fields', $customFields );
+
 if ( $http->hasPostVariable( 'RegisterButton' ) )
 {
     $socialUserRegister = new SocialUserRegister();
@@ -51,6 +54,18 @@ if ( $http->hasPostVariable( 'RegisterButton' ) )
     {
         $errors[] = $e->getMessage();
         $invalidForm = true;
+    }
+
+    foreach ($customFields as $customField) {
+        try
+        {
+            $customField->setFromRequest();
+        }
+        catch( InvalidArgumentException $e )
+        {
+            $errors[] = $customField->getName() . ': ' . $e->getMessage();
+            $invalidForm = true;
+        }
     }
 
     if ( !$invalidForm )

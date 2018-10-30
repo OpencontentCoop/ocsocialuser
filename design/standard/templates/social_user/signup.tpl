@@ -14,6 +14,9 @@
                                     <input id="Name" name="Name" placeholder="{'Nome e cognome'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if $name}{$name}{/if}" />
                                     <input id="Emailaddress" name="EmailAddress" placeholder="{'Indirizzo Email'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if $email}{$email}{/if}" />
                                     <input id="Password" name="Password" placeholder="{'Password'|i18n('social_user/signup')}" class="form-control" required="" type="password">
+                                    {foreach $custom_fields as $custom_field}
+                                        {include uri=$custom_field.template custom_field=$custom_field}
+                                    {/foreach}
                                 </div>
                                 <div class="col-lg-2"></div>
                             </div>
