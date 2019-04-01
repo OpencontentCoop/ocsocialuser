@@ -1,3 +1,4 @@
+{def $has_gdpr = false()}
 <div class="signup">
     <form name="signupform" method="post" action={'/social_user/signup/'|ezurl}>
         <fieldset>
@@ -15,10 +16,13 @@
                     <input autocomplete="off" id="Password" name="Password" placeholder="{'Password'|i18n('social_user/signup')}" class="form-control" required="" type="password">                    
                     {foreach signup_custom_fields() as $custom_field}
                         {include uri=$custom_field.template custom_field=$custom_field}
+                        {if and($custom_field.is_valid, is_set($custom_field.gdpr_text))}
+                            {set $has_gdpr = true()}
+                        {/if}
                     {/foreach}
                 </div>
             </div>
-            {if and( is_set( $terms_url ), is_set( $privacy_url ) )}
+            {if and( is_set( $terms_url ), is_set( $privacy_url ), $has_gdpr|not() )}
             <div class="row">
                 <div class="col-md-12">
                     <small>
@@ -31,3 +35,4 @@
         </fieldset>
     </form>
 </div>
+{undef $has_gdpr}

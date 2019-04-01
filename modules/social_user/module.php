@@ -20,6 +20,7 @@ $ViewList['alert'] = array(
 
 $ViewList['signup'] = array(
     'script' =>	'signup.php',
+    'ui_context' => 'edit',
     'params' => array(),
     'functions' => array( 'signup' )
 );

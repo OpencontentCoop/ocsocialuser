@@ -76,7 +76,7 @@ class SocialUserSignupCustomField implements SocialUserSignupCustomFieldInterfac
 
 	public function attributes()
 	{
-		return array('template', 'settings', 'name', 'is_required', 'identifier', 'value');
+		return array('template', 'settings', 'name', 'is_required', 'identifier', 'value', 'is_valid');
 	}
 
 	public function hasAttribute($key)
@@ -119,7 +119,16 @@ class SocialUserSignupCustomField implements SocialUserSignupCustomFieldInterfac
 			return $this->get();
 		}
 
+        if ($key == 'is_valid'){
+            return $this->isValid();
+        }
+
 		eZDebug::writeError("Attribute $key not found in class " . get_called_class());
 		return null;
 	}
+
+	public function isValid()
+    {
+        return $this->classAttribute instanceof eZContentClassAttribute;
+    }
 }

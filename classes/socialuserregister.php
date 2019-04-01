@@ -412,11 +412,14 @@ class SocialUserRegister
                         $settings = $socialUserIni->group('SignupCustomField_' . $customField);
                         if (isset($settings['PHPClass']) && class_exists($settings['PHPClass'])){
                             $handler = new $settings['PHPClass'];
-                            if($handler instanceof SocialUserSignupCustomFieldInterface){
+                            if($handler instanceof SocialUserSignupCustomFieldInterface && $handler->isValid()){
                                 self::$customFieldHandlers[$customField] = $handler;
                             }
                         }else{
-                            self::$customFieldHandlers[$customField] = new SocialUserSignupCustomField($settings);
+                            $handler = new SocialUserSignupCustomField($settings);
+                            if ($handler->isValid()) {
+                                self::$customFieldHandlers[$customField] = $handler;
+                            }
                         }
                     }
                 }
