@@ -15,4 +15,6 @@ interface SocialUserSignupCustomFieldInterface
 	public function hasAttribute($key);
 
 	public function attribute($key);
+
+    public function isValid();
 }
