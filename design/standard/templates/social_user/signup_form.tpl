@@ -13,7 +13,10 @@
                 <div class="col-lg-8 col-md-offset-2">
                     <input autocomplete="off" id="Name" name="Name" placeholder="{'Nome e cognome'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if is_set($name)}{$name}{/if}" />
                     <input autocomplete="off" id="Emailaddress" name="EmailAddress" placeholder="{'Indirizzo Email'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if is_set($email)}{$email}{/if}" />
-                    <input autocomplete="off" id="Password" name="Password" placeholder="{'Password'|i18n('social_user/signup')}" class="form-control" required="" type="password">                    
+                    <div>
+                        <input autocomplete="off" id="Password" name="Password" placeholder="{'Password'|i18n('social_user/signup')}" class="form-control" required="" type="password">
+                        {include uri='design:parts/password_meter.tpl'}
+                    </div>
                     {foreach signup_custom_fields() as $custom_field}
                         {include uri=$custom_field.template custom_field=$custom_field}
                         {if and($custom_field.is_valid, is_set($custom_field.gdpr_text))}
@@ -36,3 +39,21 @@
     </form>
 </div>
 {undef $has_gdpr}
+
+{ezscript_require(array(
+    "ezjsc::jquery",
+    "password-score/password-score.js",
+    "password-score/password-score-options.js",
+    "password-score/bootstrap-strength-meter.js",
+    "password-score/password.js"
+))}
+{ezcss_require(array('password-score/password.css'))}
+{literal}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#Password').password({
+                minLength:{/literal}{ezini('UserSettings', 'MinPasswordLength')}{literal}
+            });
+        });
+    </script>
+{/literal}

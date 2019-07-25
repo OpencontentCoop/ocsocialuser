@@ -55,7 +55,7 @@
         <div class="form col-lg-8">
             <form name="loginform" method="post" action={'/user/login/'|ezurl}>
                 <input autocomplete="off" placeholder="{'Indirizzo Email'|i18n('social_user/signin')}" class="form-control" type="text" name="Login">
-                <input autocomplete="off" placeholder="{'Password'|i18n('social_user/signin')}" class="form-control" type="password" name="Password">
+                <input autocomplete="off" placeholder="{'Password'|i18n('social_user/signin')}" class="form-control password-field" type="password" name="Password">
                 <button name="LoginButton" type="submit" class="btn btn-primary btn-lg">{'Accedi'|i18n('social_user/signin')}</button>
 				<hr />
 				<div class="forgot">
@@ -78,3 +78,13 @@
         <div class="col-lg-2"></div>
     </div>
 </div>
+
+
+{ezscript_require(array("password-score/password.js"))}
+{literal}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.password-field').password({strengthMeter:false});
+        });
+    </script>
+{/literal}
