@@ -52,7 +52,16 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#Password').password({
-                minLength:{/literal}{ezini('UserSettings', 'MinPasswordLength')}{literal}
+                minLength:{/literal}{ezini('UserSettings', 'MinPasswordLength')}{literal},
+                message: "{/literal}{'Show/hide password'|i18n('ocbootstrap')}{literal}",
+                hierarchy: {
+                    '0': ['text-danger', "{/literal}{'Evaluation of complexity: bad'|i18n('ocbootstrap')}{literal}"],
+                    '10': ['text-danger', "{/literal}{'Evaluation of complexity: very weak'|i18n('ocbootstrap')}{literal}"],
+                    '20': ['text-warning', "{/literal}{'Evaluation of complexity: weak'|i18n('ocbootstrap')}{literal}"],
+                    '30': ['text-info', "{/literal}{'Evaluation of complexity: good'|i18n('ocbootstrap')}{literal}"],
+                    '40': ['text-success', "{/literal}{'Evaluation of complexity: very good'|i18n('ocbootstrap')}{literal}"],
+                    '50': ['text-success', "{/literal}{'Evaluation of complexity: excellent'|i18n('ocbootstrap')}{literal}"]
+                }
             });
         });
     </script>
