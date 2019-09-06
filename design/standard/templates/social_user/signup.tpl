@@ -13,7 +13,10 @@
                                 <div class="col-lg-8">
                                     <input id="Name" name="Name" placeholder="{'Nome e cognome'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if $name}{$name}{/if}" />
                                     <input id="Emailaddress" name="EmailAddress" placeholder="{'Indirizzo Email'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if $email}{$email}{/if}" />
-                                    <input id="Password" name="Password" placeholder="{'Password'|i18n('social_user/signup')}" class="form-control" required="" type="password">
+                                    <div>
+                                        <input id="Password" name="Password" placeholder="{'Password'|i18n('social_user/signup')}" class="form-control" required="" type="password">
+                                        {include uri='design:parts/password_meter.tpl'}
+                                    </div>
                                     {foreach $custom_fields as $custom_field}
                                         {include uri=$custom_field.template custom_field=$custom_field}
                                     {/foreach}
@@ -56,3 +59,30 @@
         </div>
     </div>
 </section>
+
+{ezscript_require(array(
+    "ezjsc::jquery",
+    "password-score/password-score.js",
+    "password-score/password-score-options.js",
+    "password-score/bootstrap-strength-meter.js",
+    "password-score/password.js"
+))}
+{ezcss_require(array('password-score/password.css'))}
+{literal}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#Password').password({
+                minLength:{/literal}{ezini('UserSettings', 'MinPasswordLength')}{literal},
+                message: "{/literal}{'Show/hide password'|i18n('ocbootstrap')}{literal}",
+                hierarchy: {
+                    '0': ['text-danger', "{/literal}{'Evaluation of complexity: bad'|i18n('ocbootstrap')}{literal}"],
+                    '10': ['text-danger', "{/literal}{'Evaluation of complexity: very weak'|i18n('ocbootstrap')}{literal}"],
+                    '20': ['text-warning', "{/literal}{'Evaluation of complexity: weak'|i18n('ocbootstrap')}{literal}"],
+                    '30': ['text-info', "{/literal}{'Evaluation of complexity: good'|i18n('ocbootstrap')}{literal}"],
+                    '40': ['text-success', "{/literal}{'Evaluation of complexity: very good'|i18n('ocbootstrap')}{literal}"],
+                    '50': ['text-success', "{/literal}{'Evaluation of complexity: excellent'|i18n('ocbootstrap')}{literal}"]
+                }
+            });
+        });
+    </script>
+{/literal}
