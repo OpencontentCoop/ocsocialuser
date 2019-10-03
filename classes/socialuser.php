@@ -247,9 +247,9 @@ class SocialUser
                     $activate = false;
                     if ( eZPersistentObject::fetchObject( eZUserAccountKey::definition(), null,  array( 'user_id' => $this->user->id() ), true ) )
                     {
-                        $activate = ' ' . ezpI18n::tr( 'social_user/alerts', 'Attiva il tuo profilo per partecipare!' );
+                        $activate = ' ' . ezpI18n::tr( 'social_user/alerts', 'Enable your profile to participate!' );
                     }
-                    $messages[] = ezpI18n::tr( 'social_user/alerts', 'Il tuo account è ora in moderazione, tutte le tue attività non saranno rese pubbliche.' . $activate );
+                    $messages[] = ezpI18n::tr( 'social_user/alerts', 'Your account is now in moderation, all your activities will not be made public.' . $activate );
                 }
                 return $messages;
                 break;

@@ -11,8 +11,8 @@
                             <div class="row">
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-8">
-                                    <input id="Name" name="Name" placeholder="{'Nome e cognome'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if $name}{$name}{/if}" />
-                                    <input id="Emailaddress" name="EmailAddress" placeholder="{'Indirizzo Email'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if $email}{$email}{/if}" />
+                                    <input id="Name" name="Name" placeholder="{'Name and surname'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if $name}{$name}{/if}" />
+                                    <input id="Emailaddress" name="EmailAddress" placeholder="{'Email address'|i18n('social_user/signup')}" class="form-control" required="" type="text" value="{if $email}{$email}{/if}" />
                                     <div>
                                         <input id="Password" name="Password" placeholder="{'Password'|i18n('social_user/signup')}" class="form-control" required="" type="password">
                                         {include uri='design:parts/password_meter.tpl'}
@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="col-lg-2"></div>
                             </div>
-                            <button name="RegisterButton" type="submit" class="btn btn-success btn-lg">{'Iscriviti'|i18n('social_user/signup')}</button>
+                            <button name="RegisterButton" type="submit" class="btn btn-success btn-lg">{'Subscribe'|i18n('social_user/signup')}</button>
                         </fieldset>
                     {elseif $show_captcha}
                         {def $bypass_captcha = false()}
@@ -38,7 +38,7 @@
                                 {else}
                                     <div class="g-recaptcha" data-sitekey="{$recaptcha_public_key}"></div>
                                     <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl={fetch( 'content', 'locale' ).country_code|downcase}"></script>
-                                    <button name="CaptchaButton" type="submit" class="btn btn-success btn-lg btn-block">{'Prosegui'|i18n('social_user/signup')}</button>
+                                    <button name="CaptchaButton" type="submit" class="btn btn-success btn-lg btn-block">{'Continue'|i18n('social_user/signup')}</button>
                                 {/if}
                             </fieldset>
                         {/if}
@@ -46,11 +46,11 @@
                     {elseif $check_mail}
                           <div class="alert alert-info text-center">
                             <i class="fa fa-envelope-o fa-5x"></i>
-                            <h3>{"Ti è stata inviata un'e-mail all'indirizzo che hai specificato"|i18n('social_user/signup')}</h3>
-                            <h4>{"Segui le istruzioni che troverai nel messaggio per attivare il tuo profilo"|i18n('social_user/signup')}</h4>
+                            <h3>{"You were sent an email to the address you specified"|i18n('social_user/signup')}</h3>
+                            <h4>{"Follow the instructions in that mail to activate your account"|i18n('social_user/signup')}</h4>
                             {if $verify_mode|eq(2)}
-                                <p>{"Finché non avrai attivato il tuo profilo, tutte le tue attività saranno moderate"|i18n('social_user/signup')}</p>
-                                <a class="btn btn-info btn-lg" href="{'/'|ezurl(no)}">{"Inizia"|i18n('social_user/signup')}</a>
+                                <p>{"Until you have activated your profile, all of your activities will be moderate"|i18n('social_user/signup')}</p>
+                                <a class="btn btn-info btn-lg" href="{'/'|ezurl(no)}">{"Start now"|i18n('social_user/signup')}</a>
                             {/if}
                           </div>
                     {/if}

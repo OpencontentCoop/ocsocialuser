@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-12 text-center">
             <h1 style="margin-bottom: 1em">
-                {'Per partecipare devi iscriverti!'|i18n('social_user/signin')}
+                {'In order to partecipate, you need to be registered!'|i18n('social_user/signin')}
             </h1>
         </div>
     </div>
