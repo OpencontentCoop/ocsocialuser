@@ -4,7 +4,7 @@
         <fieldset>
             <div class="social_sign">
                 <h3>
-                    <strong>{'Are you not registered yet??'|i18n('social_user/signup')}<br /></strong>
+                    <strong>{'Are you not registered yet?'|i18n('social_user/signup')}<br /></strong>
                     {'It takes just 5 seconds to register!'|i18n('social_user/signup')}
                 </h3>
             </div>
