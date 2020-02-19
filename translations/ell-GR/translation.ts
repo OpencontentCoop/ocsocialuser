@@ -5,11 +5,11 @@
     <name>social_user/signin</name>
     <message>
       <source>A valid username and password is required to log in.</source>
-      <translation>Ένα έγκυρο όνομα χρήστη και τον κωδικό πρόσβασης που απαιτείται για να συνδεθείτε.</translation>
+      <translation>Απαιτείται έγκυρο όνομα χρήστη και κωδικός για τη σύνδεση</translation>
     </message>
     <message>
       <source>Access not allowed</source>
-      <translation>Πρόσβαση δεν επιτρέπεται</translation>
+      <translation>Δεν επιτρέπεται η πρόσβαση</translation>
     </message>
     <message>
       <source>Are you already a member?</source>
@@ -29,7 +29,7 @@
     </message>
     <message>
       <source>In order to partecipate, you need to be registered!</source>
-      <translation>Για να partecipate, πρέπει να είστε εγγεγραμμένος!</translation>
+      <translation>Για να συμμετάσχετε, πρέπει να είστε εγγεγραμμένος!</translation>
     </message>
     <message>
       <source>Keep me logged in</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
       <source>Sign in with your social account</source>
-      <translation>Συνδεθείτε με το κοινωνικό σας λογαριασμό</translation>
+      <translation>Συνδεθείτε με το λογαριασμό που έχετε στο κοινωνικό δίκτυο</translation>
     </message>
     <message>
       <source>You are not allowed to access% 1.</source>
@@ -76,7 +76,7 @@
     <name>social_user/config</name>
     <message>
       <source>Add</source>
-      <translation>Προσθέτω</translation>
+      <translation>Προσθήκη</translation>
     </message>
   </context>
   <context>
@@ -95,11 +95,11 @@
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Ματαίωση</translation>
+      <translation>Ακύρωση</translation>
     </message>
     <message>
       <source>E-mail</source>
-      <translation>ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ</translation>
+      <translation>Ηλεκτρονική Διεύθυνση</translation>
     </message>
     <message>
       <source>Prevent user to comment</source>
@@ -107,7 +107,7 @@
     </message>
     <message>
       <source>Save</source>
-      <translation>Σώσει</translation>
+      <translation>Αποθήκευση</translation>
     </message>
     <message>
       <source>Username</source>
@@ -134,7 +134,7 @@
     </message>
     <message>
       <source>Continue</source>
-      <translation>Να συνεχίσει</translation>
+      <translation>Συνέχεια</translation>
     </message>
     <message>
       <source>Create an account now: it's easy and free!</source>
@@ -186,7 +186,7 @@
     </message>
     <message>
       <source>reCAPTCHA API key not found</source>
-      <translation>κλειδί API reCAPTCHA δεν βρέθηκε</translation>
+      <translation>το κλειδί API reCAPTCHA δεν βρέθηκε</translation>
     </message>
     <message>
       <source>Security code</source>
@@ -214,11 +214,11 @@
     </message>
     <message>
       <source>Until you have activated your profile, all of your activities will be moderate</source>
-      <translation>Μέχρι να ενεργοποιηθεί το προφίλ σας, όλες τις δραστηριότητές σας θα είναι μέτρια</translation>
+      <translation>Μέχρι να ενεργοποιηθεί το προφίλ σας, όλες τις δραστηριότητές σας θα ελέγχονται από τους συντονιστές</translation>
     </message>
     <message>
       <source>When they are validated you will receive an email notification to the email address you entered</source>
-      <translation>Όταν επικυρωθούν θα λάβετε μια ειδοποίηση μέσω ηλεκτρονικού ταχυδρομείου στη διεύθυνση ηλεκτρονικού ταχυδρομείου που εισαγάγατε</translation>
+      <translation>Όταν επικυρωθούν θα λάβετε μια ειδοποίηση μέσω ηλεκτρονικού ταχυδρομείου στη διεύθυνση ηλεκτρονικού ταχυδρομείου που έχετε εισάγει</translation>
     </message>
     <message>
       <source>You were sent an email to the address you specified</source>
@@ -229,7 +229,7 @@
     <name>social_user/dashboard</name>
     <message>
       <source>Cancel</source>
-      <translation>Ματαίωση</translation>
+      <translation>Ακύρωση</translation>
     </message>
     <message>
       <source>Delete items</source>
@@ -240,7 +240,7 @@
     <name>social_user/user_edit</name>
     <message>
       <source>Change password</source>
-      <translation>Αλλαξε κωδικό</translation>
+      <translation>Αλλαγή κωδικού</translation>
     </message>
     <message>
       <source>Change your password</source>
@@ -248,7 +248,7 @@
     </message>
     <message>
       <source>E-mail</source>
-      <translation>ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ</translation>
+      <translation>Ηλεκτρονική Διεύθυνση</translation>
     </message>
     <message>
       <source>Edit profile</source>
@@ -291,7 +291,7 @@
     </message>
     <message>
       <source>Thank you want to participate!</source>
-      <translation>Ευχαριστώ θέλετε να συμμετάσχετε!</translation>
+      <translation>Ευχαριστούμε για την συμμετοχή σας!</translation>
     </message>
     <message>
       <source>To enable or disable email notifications Click %notification_link_start% here% notification_link_end%</source>
@@ -306,11 +306,11 @@
     <name>social_user/alerts</name>
     <message>
       <source>Enable your profile to participate!</source>
-      <translation>Ενεργοποιήστε το προφίλ σας να συμμετάσχουν!</translation>
+      <translation>Ενεργοποιήστε το προφίλ σας για να συμμετάσχετε.</translation>
     </message>
     <message>
       <source>Your account is now in moderation, all your activities will not be made public.</source>
-      <translation>Ο λογαριασμός σας είναι τώρα με μέτρο, όλες οι δραστηριότητες σας δεν θα δημοσιοποιηθεί.</translation>
+      <translation>Ο λογαριασμός σας είναι υπό επιτήρηση, όλες οι δραστηριότητες σας δεν θα δημοσιοποιηθούν.</translation>
     </message>
   </context>
 </TS>
